@@ -1,0 +1,29 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+  <ul class="pagination">
+  {% for i in range(1, telekocsis.lastPage + 1) %}
+    {% if (i==telekocsis.currentPage) %}
+    <li class="active"><a href="#">{{ i }}</a></li>
+    {% else %}
+    <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>  
+  <div>
+  {% for telekocsi in telekocsis.data %}
+    <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }}</a>       
+      </div>     
+        <ul class="list-group">       
+          <li class="list-group-item">
+              Honnan: {{ telekocsi.fromm }}<br>Hova: {{ telekocsi.to }}<br>Indulás dátuma: {{ telekocsis[i].when }}<br>Ár: {{ telekocsi.price }}<br>Hirdető: {{ telekocsi.poster }}
+          </li>       
+      </ul>        
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+{% endblock %}

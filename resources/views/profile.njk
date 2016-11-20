@@ -1,0 +1,16 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+<div class="row">
+  <h1>{{ user.username }}</h1>
+  <p>Email: {{ user.email }}</p>
+  <p>Rólam: {{ user.aboutme }}</p>
+  <p>Regisztált: {{ user.created_at }}</p>
+  
+</div>
+{% if currentUser.id == user.id %}
+<a class="btn btn-default" href="/profile/{{ user.id }}/editprofile">Új jelszó</a>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+<h3>Összes utazás</h3>
+<div class="row">
+  {% for telekocsi in telekocsis %}
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }}</a>            
+      </div>     
+        <ul class="list-group">      
+          <li class="list-group-item">
+              Honnan: {{ telekocsi.fromm }}<br>Hova: {{ telekocsi.to }}<br>Indulás dátuma: {{ telekocsis[i].when }}<br>Ár: {{ telekocsi.price }}<br>Szabad ülések: {{ telekocsis[i].seats }}<br>Hirdető: {{ telekocsi.poster }}<br>
+          </li>        
+      </ul>       
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

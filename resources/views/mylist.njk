@@ -1,0 +1,22 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+<div class="row">
+  {% for telekocsi in telekocsis %}
+  {% if currentUser.username == telekocsi.poster %}
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }}</a>            
+      </div>     
+        <ul class="list-group">      
+          <li class="list-group-item">
+              Honnan: {{ telekocsi.fromm }}<br>Hova: {{ telekocsi.to }}<br>Indulás dátuma: {{ telekocsis[i].when }}<br>Ár: {{ telekocsi.price }}
+          </li>        
+      </ul>       
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

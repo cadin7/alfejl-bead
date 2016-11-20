@@ -1,0 +1,22 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+<div class="row">
+  <h2>Honnan: {{ telekocsi.fromm }}</h2>
+  <p>Hova: {{ telekocsi.to }}</p>
+  <p>Leírás: {{ telekocsi.seats }}</p>
+  <p>Ár: {{ telekocsi.price }}</p>
+  <p>Indulás dátuma: {{ telekocsi.when }}</p>
+  <p>Hirdető: {{ telekocsi.poster }}</p>
+  <p>Kapcsolat: {{ telekocsi.contact }}</p>
+  <p>Feladva: {{ telekocsi.	created_at }}</p>
+</div>
+{% if currentUser.username == telekocsi.poster %}
+<a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
+<form action = "/telekocsi/{{ telekocsi.id }}/delete" method="POST">
+    {{ csrfField }}
+
+<input class="btn btn-default" type="submit" value="Törlés"/>
+{% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+<div class="row">
+  <ul>
+    {% for error in old('errors') %}
+      <li>{{ error.message }}</li>
+    {% endfor %}
+  </ul>
+  <form method="POST">
+    {{ csrfField }}
+    <input type="password" class="form-control" name="password" required/>  
+    
+    <input class="btn btn-default" type="submit" value="Mentés"/>
+  </form>
+</div>
+{% endblock %}
