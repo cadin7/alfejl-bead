@@ -147,7 +147,7 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 
 **Meghírdetett utak**
 
-![](docs/browse.png)
+![](doc/browse.png)
 
 **Keresés**
 
