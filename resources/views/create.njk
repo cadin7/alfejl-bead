@@ -17,7 +17,7 @@
       <legend>Új hírdetés feladása</legend>
       <input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
       <div>
-        <label for="category_id" class="col-lg-2 control-label">Régió</label>
+        <label for="category_id" class="col-lg-2 control-label">Utazás típusa</label>
         <div class="col-lg-10">
           <select class="form-control" id="inputRegion" name="category_id">
             {% for category in categories %}
@@ -64,7 +64,7 @@
       </div>
       <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-primary">Létrehoz</button>
+        <button type="submit" class="btn btn-primary">Feladás</button>
       </div>
     </div>
     </fieldset>

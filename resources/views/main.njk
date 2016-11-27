@@ -3,15 +3,16 @@
 {% block content %}
 <h3>Legfrissebb hírdetések</h3>
 <div class="row">
-  {% for i in range(telekocsis.length-9, telekocsis.length) %}
+  {% for telekocsi in telekocsis %}
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a href="/telekocsi/{{ telekocsis[i].id }}">{{ telekocsis[i].fromm }}</a>       
+            <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }} -> {{ telekocsi.to }}</a>  
+            <a href="#" class="btn btn-primary pull-right btn-xs" onclick="seatsFunc()">Lefoglalom</a>     
           </div>      
             <ul class="list-group">       
               <li class="list-group-item">
-                  Honnan: {{ telekocsis[i].fromm }}<br>Hova: {{ telekocsi.to }}<br>Indulás dátuma: {{ telekocsis[i].when }}<br>Ár: {{ telekocsis[i].price }}<br>Szabad ülések: {{ telekocsis[i].seats }}<br>Hirdető: {{ telekocsis[i].poster }}
+                  Indulás dátuma: {{ telekocsi.when }}<br>Ár: {{ telekocsi.price }}<br>Szabad ülések: {{ telekocsi.seats }}<br>Hirdető: {{ telekocsi.poster }}
               </li>        
           </ul>       
         </div>

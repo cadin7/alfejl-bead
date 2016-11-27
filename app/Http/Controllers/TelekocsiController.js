@@ -8,6 +8,17 @@ class TelekocsiController {
     * list(req, res) {
 
         var telekocsis = yield Telekocsi.all();
+
+        var seatsFunc  = ( function() {
+            if(telekocsis.seats > 0) {
+                console.log("1");
+            }
+            else {
+                console.log("2");
+            }
+            return ;
+        })
+
          yield res.sendView('main', {
             telekocsis: telekocsis.toJSON(),
         });
@@ -110,7 +121,7 @@ class TelekocsiController {
                 }
             })
             .with('category')
-            .paginate(page, 9)
+            .paginate(page, 3)
         yield res.sendView('search', {
             telekocsis: telekocsis.toJSON()
         });

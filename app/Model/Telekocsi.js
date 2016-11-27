@@ -6,8 +6,8 @@ class Telekocsi extends Lucid {
     static get rules () {
         return {
             category_id: 'required',
-            fromm: 'required|unique:telekocsis',
-            to: 'required|unique:telekocsis',
+            fromm: 'required',
+            to: 'required',
             when: 'required',
             seats: 'required',
             price: 'required',

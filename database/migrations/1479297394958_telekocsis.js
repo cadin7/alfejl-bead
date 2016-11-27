@@ -5,9 +5,10 @@ const Schema = use('Schema')
 class TelekocsisTableSchema extends Schema {
 
   up () {
-    this.drop('telekocsis', (table) => {
+    this.create('telekocsis', (table) => {
       table.increments()
       table.string('poster')
+      table.string('category_id')
       table.string('fromm')
       table.string('to')
       table.string('when')

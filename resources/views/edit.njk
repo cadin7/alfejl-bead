@@ -9,8 +9,9 @@
   </ul>
   <form method="POST">
     {{ csrfField }}
-    <input type="text" class="form-control" name="seats" value="{{ telekocsi.seats }}"/>  
-    <input type="text" class="form-control" name="price" value="{{ telekocsi.price }}"/>
+    <p>Indulás dátuma:</p> <input type="text" class="form-control" name="when" value="{{ telekocsi.when }}"/>
+    <p>Ár:</p><input type="text" class="form-control" name="price" value="{{ telekocsi.price }}"/>  
+    <p>Szabad ülések:</p><input type="text" class="form-control" name="seats" value="{{ telekocsi.seats }}"/>
     
     <input class="btn btn-default" type="submit" value="Mentés"/>
   </form>

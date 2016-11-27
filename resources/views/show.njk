@@ -7,9 +7,9 @@
   <p>Leírás: {{ telekocsi.seats }}</p>
   <p>Ár: {{ telekocsi.price }}</p>
   <p>Indulás dátuma: {{ telekocsi.when }}</p>
+  <p>Szabad ülések: {{ telekocsi.seats }}</p>
   <p>Hirdető: {{ telekocsi.poster }}</p>
   <p>Kapcsolat: {{ telekocsi.contact }}</p>
-  <p>Feladva: {{ telekocsi.	created_at }}</p>
 </div>
 {% if currentUser.username == telekocsi.poster %}
 <a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
