@@ -35,8 +35,6 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 *	Saját utazás szerkesztése
 *	Meglévő utazás törlése
 
-![](docs/images/eseti.png)
-
 ###Tervezés
 
 #####	Architektúra terv
