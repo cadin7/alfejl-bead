@@ -137,10 +137,10 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
       * _mylist.njk_
       * _search.njk_
       * _show.njk_
-	    * _showfavorites.njk_
+      * _showfavorites.njk_
       * _profile.njk_
       * _editprofile.njk_
-    * _parent.njk_
+      * _parent.njk_
 
 #####Felhasználói-felület modell
 
@@ -192,7 +192,6 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 
 
 ### 3. Beadandó
-####<b>Kliens-oldali Javascript fejlesztések</b>
 * **AJAX funkciók**
   * Regisztráció
   * Bejelentkezés
@@ -200,16 +199,16 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
   * Utazás keresése
    
 ####<b>A funkciók fejlesztése során érintett fájlok</b>
-*.../TelekocsiController.js
-*.../UserController.js
-*.../routes.js
-*.../deleteTelekocsi.js
-*.../login.js
-*.../register.js
-*.../search.js
-*.../login.njk
-*.../parent.njk
-*.../register.njk
+* .../TelekocsiController.js
+* .../UserController.js
+* .../routes.js
+* .../deleteTelekocsi.js
+* .../login.js
+* .../register.js
+* .../search.js
+* .../login.njk
+* .../parent.njk
+* .../register.njk
 
 
 ###	Felhasználói dokumentáció
