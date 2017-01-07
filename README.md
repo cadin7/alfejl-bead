@@ -107,6 +107,10 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 *	**Categories:** 
 	* _id_
 	* _name_
+	
+*	**Favorites:** 
+	* telekocsi_id_
+	* user_id_
 
 
 ![](doc/datamodel.png)
@@ -133,6 +137,7 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
       * _mylist.njk_
       * _search.njk_
       * _show.njk_
+	    * _showfavorites.njk_
       * _profile.njk_
       * _editprofile.njk_
     * _parent.njk_
@@ -181,6 +186,9 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 
 ![](doc/edit.png)
 
+**Kedvenceim**
+
+![](doc/favorites.png)
 
 
 ### 3. Beadandó
