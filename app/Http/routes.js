@@ -19,22 +19,35 @@ const Route = use('Route')
 
 
 Route.get('/', 'TelekocsiController.list');
-Route.get('/create', 'TelekocsiController.create');
-Route.post('/create', 'TelekocsiController.createNew');
+Route.get('/create', 'TelekocsiController.create').middleware('auth');
+Route.post('/create', 'TelekocsiController.createNew').middleware('auth');
 Route.get('/search', 'TelekocsiController.search');
 Route.get('/browse', 'TelekocsiController.browse');
 Route.get('/telekocsi/:id', 'TelekocsiController.show');
-Route.get('/telekocsi/:id/edit', 'TelekocsiController.edit');
-Route.post('/telekocsi/:id/edit', 'TelekocsiController.editSubmit');
-Route.post('/telekocsi/:id/delete', 'TelekocsiController.delete');
+Route.get('/telekocsi/:id/edit', 'TelekocsiController.edit').middleware('auth');
+Route.post('/telekocsi/:id/edit', 'TelekocsiController.editSubmit').middleware('auth');
+Route.post('/telekocsi/:id/delete', 'TelekocsiController.delete').middleware('auth');
 
-Route.get('/mylist/:poster', 'TelekocsiController.mylist');
+Route.get('/mylist/:poster', 'TelekocsiController.mylist').middleware('auth');
 
 Route.get('/register', 'UserController.register');
 Route.post('/register', 'UserController.registerSubmit');
 Route.get('/login', 'UserController.login');
 Route.post('/login', 'UserController.loginSubmit');
-Route.get('/logout', 'UserController.logout');
-Route.get('/profile/:id', 'UserController.profile');
-Route.get('/profile/:id/editprofile', 'UserController.edit');
-Route.post('/profile/:id/editprofile', 'UserController.editSubmit');
+Route.get('/logout', 'UserController.logout').middleware('auth');
+Route.get('/profile/:id', 'UserController.profile').middleware('auth');
+Route.get('/profile/:id/editprofile', 'UserController.edit').middleware('auth');
+Route.post('/profile/:id/editprofile', 'UserController.editSubmit').middleware('auth');
+
+//2. kieg
+
+Route.get('/myfavorites/:poster', 'TelekocsiController.myfavorites').middleware('auth');
+Route.post('/addToFavorites/:id', 'TelekocsiController.addToFavorites').middleware('auth');
+Route.post('/telekocsi/:id/deleteFavorite', 'TelekocsiController.deleteFavorite').middleware('auth');
+
+Route.group('ajax', function () {
+  Route.delete('/telekocsi/:id/delete', 'TelekocsiController.ajaxDelete').middleware('auth')
+  Route.get('/search', 'TelekocsiController.ajaxSearch')
+  Route.post('/login', 'UserController.ajaxLogin')
+  Route.post('/register', 'UserController.ajaxRegister')
+}).prefix('/ajax');

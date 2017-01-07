@@ -1,0 +1,26 @@
+{% extends "parent.njk" %}
+
+{% block content %}
+  <div class="row">
+    {% for favorite in favorites %}
+    {% if currentUser.username == favorite.user_id %}  
+      {% for telekocsi in telekocsis %}
+          {% if favorite.telekocsi_id == telekocsi.id %}
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }} -> {{ telekocsi.to }}</a>            
+                  </div>     
+                    <ul class="list-group">      
+                      <li class="list-group-item">
+                          Cím: {{ telekocsi.poster }}<br>Ár/hó: {{ telekocsi.price }}
+                      </li>        
+                    </ul>    
+                  </div>            
+              </div>      
+            {% endif %}
+        {% endfor %}              
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

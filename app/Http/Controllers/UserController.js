@@ -11,16 +11,18 @@ class UserController {
     }
 
     * loginSubmit(req, res) {
-        try{
+        try {
             var post = req.post();
             yield req.auth.attempt(post.email, post.password);
             res.redirect('/');
-        }catch(e){
+        } catch (e) {
             yield req
                 .withOut('password')
-                .andWith({ errors: [{
-                    message:'Bad credentials'
-                }] })
+                .andWith({
+                    errors: [{
+                        message: 'Bad credentials'
+                    }]
+                })
                 .flash()
             res.redirect('back')
             console.log(e);
@@ -40,25 +42,25 @@ class UserController {
     * registerSubmit(req, res) {
         var post = req.post();
         var userData = {
-            username:post.username,
-            email:post.email,
-            password:post.password,
-            aboutme:post.aboutme
+            username: post.username,
+            email: post.email,
+            password: post.password,
+            aboutme: post.aboutme
         };
 
         const validation = yield Validator.validateAll(userData, User.rules)
 
-         if (validation.fails()) {
-             yield req
+        if (validation.fails()) {
+            yield req
                 .withOut('password')
                 .andWith({ errors: validation.messages() })
                 .flash()
 
             res.redirect('back')
             return
-         }
+        }
 
-        
+
         userData.password = yield Hash.make(userData.password);
 
         var user = yield User.create(userData);
@@ -78,7 +80,7 @@ class UserController {
     }
 
     * edit(req, res) {
-        var user=yield User.findBy('id', req.param('id'));
+        var user = yield User.findBy('id', req.param('id'));
 
         yield res.sendView('editprofile', {
             user: user.toJSON()
@@ -88,9 +90,9 @@ class UserController {
 
     * editSubmit(req, res) {
         var post = req.post();
-        var user=yield User.findBy('id', req.param('id'));
+        var user = yield User.findBy('id', req.param('id'));
 
-        user.password=post.password;
+        user.password = post.password;
 
         user.password = yield Hash.make(user.password);
 
@@ -99,6 +101,37 @@ class UserController {
         res.redirect('/');
     }
 
+    * ajaxLogin(req, res) {
+        try {
+            var post = req.post();
+            yield req.auth.attempt(post.email, post.password);
+            res.ok({
+                success: true,
+            });
+        } catch (e) {
+            res.ok({
+                success: false
+            })
+        }
+    }
+
+     * ajaxRegister(request, response) {
+		const user = new User()
+		user.username = request.input('username')
+		user.email = request.input('email')
+		user.password = yield Hash.make(request.input('password'))
+		user.aboutme = request.input('aboutme')
+		
+		try {
+			yield user.save()
+			response.ok({ success: true, messagetype: 'success', message : 'A regisztráció sikeres volt! Kérlek jelentkezz be!' })
+			return
+		}
+		catch (error) {
+			response.ok({ success: false, messagetype: 'danger', message : 'A regisztráció sikertelen volt!' })
+			return
+		}
+	}
 }
 
 module.exports = UserController

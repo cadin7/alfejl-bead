@@ -35,7 +35,7 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 *	Saját utazás szerkesztése
 *	Meglévő utazás törlése
 
-![](docs/images/eseti.png)
+![](doc/user.png)
 
 ###Tervezés
 
@@ -147,7 +147,7 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 
 **Meghírdetett utak**
 
-![](docs/browse.png)
+![](doc/browse.png)
 
 **Keresés**
 
@@ -180,6 +180,29 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 **Utazás szerkesztése**
 
 ![](doc/edit.png)
+
+
+
+### 3. Beadandó
+####<b>Kliens-oldali Javascript fejlesztések</b>
+* **AJAX funkciók**
+  * Regisztráció
+  * Bejelentkezés
+  * Utazás törlése
+  * Utazás keresése
+   
+####<b>A funkciók fejlesztése során érintett fájlok</b>
+*.../TelekocsiController.js
+*.../UserController.js
+*.../routes.js
+*.../deleteTelekocsi.js
+*.../login.js
+*.../register.js
+*.../search.js
+*.../login.njk
+*.../parent.njk
+*.../register.njk
+
 
 ###	Felhasználói dokumentáció
 

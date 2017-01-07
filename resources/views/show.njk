@@ -12,11 +12,41 @@
   <p>Kapcsolat: {{ telekocsi.contact }}</p>
 </div>
 {% if currentUser.username == telekocsi.poster %}
-<a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
-<form action = "/telekocsi/{{ telekocsi.id }}/delete" method="POST">
-    {{ csrfField }}
+  <a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
+  <a class="btn btn-default" id="btnDelete" href="/telekocsi/{{ telekocsi.id }}/delete" >Törlés</a>
+    {% else %}
+    {% if currentUser != null %}
+        {% if favorite[0].telekocsi_id == telekocsi.id %}
+            <form action = "/telekocsi/{{ telekocsi.id }}/deleteFavorite" method="POST">
+                {{ csrfField }}
+                <input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
+                <input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
 
-<input class="btn btn-default" type="submit" value="Törlés"/>
-{% endif %}
-</form>
+            <input class="btn btn-default" type="submit" value="Törlés a kedvencekből"/>
+            </form>
+        {% else %}
+            <form action = "/addToFavorites/{{ telekocsi.id }}" method="POST">
+                {{ csrfField }}
+                <input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
+                <input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
+
+            <input class="btn btn-default" type="submit" value="Kedvencekhez"/>
+            </form>
+        {% endif %}
+        {% endif %}
+
+    {% endif %}
+    
+    <div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">Biztosan törölni szeretnéd?</div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-default modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
