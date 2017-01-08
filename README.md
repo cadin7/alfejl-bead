@@ -198,7 +198,7 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
   * Utazás törlése
   * Utazás keresése
    
-####<b>A funkciók fejlesztése során érintett fájlok</b>
+####A funkciók fejlesztése során érintett fájlok
 * .../TelekocsiController.js
 * .../UserController.js
 * .../routes.js
@@ -209,6 +209,23 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 * .../login.njk
 * .../parent.njk
 * .../register.njk
+
+###<b>Tesztelés</b>
+**SELENIUM IDE telepítése (Firefox)**
+* https://addons.mozilla.org/hu/firefox/addon/selenium-ide/ plugin telepítése
+
+**SELENIUM IDE használata**
+* Eszközök/Selenium IDE
+* a felugró ablakban tudunk új teszteket készíteni (piros gomb lenyomása után végezzük el azt az utasítássorozatot, amit teszt formájában viszont szeretnénk látni.)
+* a felugró ablakban tudunk már megírt teszteket újra futtatni:
+* Fájl/Open/"kiválasztjuk a megfelelő tesztet"/
+* kiválasztás után "Play entire test suite" gombra kattintva újra és újra le játszhatóak a teszteket
+
+**Tesztesetek**
+* Nem regisztrált felhasználóként regisztráció (test/reg.html)
+* Regisztrált felhasználóként való bejelentkezés (test/login.html)
+* Bejelentkezett felhasználóként kedvenc felvétele (tests/newfav.html)
+* Bejelentkezett felhasználóként kedvenc törlése (tests/deletefav.html)
 
 
 ###	Felhasználói dokumentáció

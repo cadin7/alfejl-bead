@@ -3,6 +3,7 @@ const Category = use('App/Model/Category')
 const Telekocsi = use('App/Model/Telekocsi')
 const Validator = use('Validator')
 const Favorite = use('App/Model/Favorite')
+const Database = use('Database')
 
 class TelekocsiController {
 
@@ -135,7 +136,7 @@ class TelekocsiController {
     }
 
     * delete(req, res) {
-        var telekocsi=yield Telekocsi.findBy('id', req.param('id'));
+        var telekocsi = yield Telekocsi.findBy('id', req.param('id'));
         var favorite = yield Favorite.findBy('telekocsi_id', req.param('id'));
         yield telekocsi.delete();
         yield favorite.delete();
@@ -176,7 +177,7 @@ class TelekocsiController {
         });
     }
 
-    * deleteFav(req, res) {
+    * deleteFavorite(req, res) {
         let favorite = Database.table('favorites').where(function(){
             this.where('telekocsi_id',req.input('id'))
             this.where('user_id',req.input('poster'))
@@ -194,9 +195,9 @@ class TelekocsiController {
             return;
         }
 
-        var telekocsis = yield telekocsi.query()
+        var telekocsis = yield Telekocsi.query()
         .where(function () {
-            this.where('address','LIKE', '%'+query+'%')
+            this.where('fromm','LIKE', '%'+query+'%')
         });
 
         res.ok(telekocsis);
@@ -204,7 +205,7 @@ class TelekocsiController {
 
     * ajaxDelete(req, res) {
      const id = req.param('id');
-     const telekocsi = yield telekocsi.find(id);
+     const telekocsi = yield Telekocsi.find(id);
 
      if (telekocsi) {
         if (req.currentUser.username !== telekocsi.poster) {

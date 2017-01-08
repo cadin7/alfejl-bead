@@ -12,6 +12,7 @@
   <p>Kapcsolat: {{ telekocsi.contact }}</p>
 </div>
 {% if currentUser.username == telekocsi.poster %}
+ {{ csrfField | safe }}
   <a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
   <a class="btn btn-default" id="btnDelete" href="/telekocsi/{{ telekocsi.id }}/delete" >Törlés</a>
     {% else %}

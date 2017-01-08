@@ -25,8 +25,8 @@
 	<script src="/search.js"></script>
 	<script src="/register.js"></script>
 	<script src="/deleteTelekocsi.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-     {% endblock %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script> {% endblock
+	%}
 
 </head>
 
@@ -43,11 +43,10 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/browse">Meghírdetett utak</a></li>
 					<li>
-						<form class="navbar-form navbar-left" role="search" action="/search" method="GET">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Keresés kiindulópont alapján" name="q">
-							</div>
+						<form class="navbar-form navbar-left" role="search" action="/search" id="search" method="GET">
+							<input name="q" placeholder="Keress cím alapján" class="form-control" autocomplete="off" />
 							<button type="submit" class="btn btn-default">Keres</button>
+							<div class="list-group telekocsi-suggestions suggestions"></div>
 						</form>
 					</li>
 					{% if currentUser %}

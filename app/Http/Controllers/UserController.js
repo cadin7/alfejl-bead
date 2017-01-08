@@ -124,7 +124,7 @@ class UserController {
 		
 		try {
 			yield user.save()
-			response.ok({ success: true, messagetype: 'success', message : 'A regisztráció sikeres volt! Kérlek jelentkezz be!' })
+			response.ok({ success: true, messagetype: 'success', message : 'A regisztráció sikeres volt!' })
 			return
 		}
 		catch (error) {
