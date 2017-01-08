@@ -224,8 +224,8 @@ A program legfőbb célja jól átláthatóan és érthetően megjeleníteni a m
 **Tesztesetek**
 * Nem regisztrált felhasználóként regisztráció (test/reg.html)
 * Regisztrált felhasználóként való bejelentkezés (test/login.html)
-* Bejelentkezett felhasználóként kedvenc felvétele (tests/newfav.html)
-* Bejelentkezett felhasználóként kedvenc törlése (tests/deletefav.html)
+* Bejelentkezett felhasználóként kedvenc felvétele (test/newfav.html)
+* Bejelentkezett felhasználóként kedvenc törlése (test/deletefav.html)
 
 
 ###	Felhasználói dokumentáció
