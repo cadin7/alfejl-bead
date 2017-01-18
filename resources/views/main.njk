@@ -1,22 +1,37 @@
-{% extends "parent.njk" %}
-
-{% block content %}
+{% extends "parent.njk" %} {% block content %}
 <h3>Legfrissebb hírdetések</h3>
 <div class="row">
-  {% for telekocsi in telekocsis %}
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <a href="/telekocsi/{{ telekocsi.id }}">{{ telekocsi.fromm }} -> {{ telekocsi.to }}</a>  
-          </div>      
-            <ul class="list-group">       
-              <li class="list-group-item">
-                  Indulás dátuma: {{ telekocsi.when }}<br>Ár: {{ telekocsi.price }}<br>Szabad ülések: {{ telekocsi.seats }}<br>Hirdető: {{ telekocsi.poster }}
-              </li>        
-          </ul>       
-        </div>
-      </div>
-  {% endfor %}
+	{% for telekocsi in telekocsis %}
+	<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a href="/telekocsi/{{ telekocsi.id }}">
+        {{ telekocsi.fromm }} -> {{ telekocsi.to }}</a> {% if currentUser.username !== telekocsi.poster %} {{ csrfField | safe }}
+				<a href="/telekocsi/{{ telekocsi.id }}" class="btn btn-primary pull-right btn-xs">Lefoglalom</a>
+				{% endif %}
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item">
+					Indulás dátuma: {{ telekocsi.when }}<br>Ár: {{ telekocsi.price }}<br>Szabad ülések: {{ telekocsi.seats }}<br>Hirdető:
+					{{ telekocsi.poster }}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	{% endfor %}
 
 </div>
 {% endblock %}
+
+<!--<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-body">Biztosan lefoglalod az utat?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default modal-ok" data-dismiss="modal">Igen</button>
+					<button type="button" class="btn btn-default modal-cancel" data-dismiss="modal">Nem</button>
+				</div>
+      </div>
+		</div>
+	</div>-->

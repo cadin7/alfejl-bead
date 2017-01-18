@@ -1,53 +1,57 @@
-{% extends "parent.njk" %}
-
-{% block content %}
+{% extends "parent.njk" %} {% block content %}
 <div class="row">
-  <h2>Honnan: {{ telekocsi.fromm }}</h2>
-  <p>Hova: {{ telekocsi.to }}</p>
-  <p>Leírás: {{ telekocsi.seats }}</p>
-  <p>Ár: {{ telekocsi.price }}</p>
-  <p>Indulás dátuma: {{ telekocsi.when }}</p>
-  <p>Szabad ülések: {{ telekocsi.seats }}</p>
-  <p>Hirdető: {{ telekocsi.poster }}</p>
-  <p>Kapcsolat: {{ telekocsi.contact }}</p>
+	<h2>Honnan: {{ telekocsi.fromm }}</h2>
+	<p>Hova: {{ telekocsi.to }}</p>
+	<p>Leírás: {{ telekocsi.seats }}</p>
+	<p>Ár: {{ telekocsi.price }}</p>
+	<p>Indulás dátuma: {{ telekocsi.when }}</p>
+	<p>Szabad ülések: {{ telekocsi.seats }}</p>
+	<p>Hirdető: {{ telekocsi.poster }}</p>
+	<p>Kapcsolat: {{ telekocsi.contact }}</p>
 </div>
-{% if currentUser.username == telekocsi.poster %}
- {{ csrfField | safe }}
-  <a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
-  <a class="btn btn-default" id="btnDelete" href="/telekocsi/{{ telekocsi.id }}/delete" >Törlés</a>
-    {% else %}
-    {% if currentUser != null %}
-        {% if favorite[0].telekocsi_id == telekocsi.id %}
-            <form action = "/telekocsi/{{ telekocsi.id }}/deleteFavorite" method="POST">
-                {{ csrfField }}
-                <input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
-                <input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
+{% if currentUser.username == telekocsi.poster %} {{ csrfField | safe }}
+<a class="btn btn-default" href="/telekocsi/{{ telekocsi.id }}/edit">Szerkesztés</a>
+<a class="btn btn-default" id="btnDelete" href="/telekocsi/{{ telekocsi.id }}/delete">Törlés</a> {% else %} {% if currentUser
+!= null %} {% if favorite[0].telekocsi_id == telekocsi.id %}
+<form action="/telekocsi/{{ telekocsi.id }}/deleteFavorite" method="POST">
+	{{ csrfField }}
+	<input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
+	<input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
 
-            <input class="btn btn-default" type="submit" value="Törlés a kedvencekből"/>
-            </form>
-        {% else %}
-            <form action = "/addToFavorites/{{ telekocsi.id }}" method="POST">
-                {{ csrfField }}
-                <input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
-                <input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
+	<input class="btn btn-default" type="submit" value="Törlés a kedvencekből" />
+</form>
+{% else %}
+<form action="/addToFavorites/{{ telekocsi.id }}" method="POST">
+	{{ csrfField }}
+	<input type="text" id="inputPoster" name="poster" value="{{ currentUser.username }}" hidden/>
+	<input type="text" id="inputPoster2" name="id" value="{{ telekocsi.id }}" hidden/>
+	<a href="/telekocsi/{{ telekocsi.id }}/reserv" id="btnReserv" class="btn btn-primary">Lefoglalom</a>
+	<input class="btn btn-default" type="submit" value="Kedvencekhez" />
+</form>
+{% endif %} {% endif %} {% endif %}
 
-            <input class="btn btn-default" type="submit" value="Kedvencekhez"/>
-            </form>
-        {% endif %}
-        {% endif %}
-
-    {% endif %}
-    
-    <div class="modal fade confirm-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-        <div class="modal-body">Biztosan törölni szeretnéd?</div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default modal-ok" data-dismiss="modal">OK</button>
-            <button type="button" class="btn btn-default modal-cancel" data-dismiss="modal">Mégse</button>
-        </div>
-        </div>
-    </div>
+<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body">Biztosan törölni szeretnéd?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default modal-ok" data-dismiss="modal">OK</button>
+				<button type="button" class="btn btn-default modal-cancel" data-dismiss="modal">Mégse</button>
+			</div>
+		</div>
+	</div>
 </div>
+
+<!--<div class="modal fade confirm-modal" id="" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body">Biztosan tasd szeretnéd?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default modal-ok" data-dismiss="modal">OK</button>
+				<button type="button" class="btn btn-default modal-cancel" data-dismiss="modal">Mégse</button>
+			</div>
+		</div>
+	</div>
+</div>-->
 
 {% endblock %}

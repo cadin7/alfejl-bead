@@ -27,6 +27,7 @@ Route.get('/telekocsi/:id', 'TelekocsiController.show');
 Route.get('/telekocsi/:id/edit', 'TelekocsiController.edit').middleware('auth');
 Route.post('/telekocsi/:id/edit', 'TelekocsiController.editSubmit').middleware('auth');
 Route.post('/telekocsi/:id/delete', 'TelekocsiController.delete').middleware('auth');
+Route.post('/telekocsi/:id/reserv', 'TelekocsiController.reserv').middleware('auth');
 
 Route.get('/mylist/:poster', 'TelekocsiController.mylist').middleware('auth');
 
@@ -47,6 +48,7 @@ Route.post('/telekocsi/:id/deleteFavorite', 'TelekocsiController.deleteFavorite'
 
 Route.group('ajax', function () {
   Route.delete('/telekocsi/:id/delete', 'TelekocsiController.ajaxDelete').middleware('auth')
+  Route.post('/telekocsi/:id/reserv', 'TelekocsiController.ajaxReserv').middleware('auth');
   Route.get('/search', 'TelekocsiController.ajaxSearch')
   Route.post('/login', 'UserController.ajaxLogin')
   Route.post('/register', 'UserController.ajaxRegister')

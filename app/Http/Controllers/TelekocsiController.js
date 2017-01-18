@@ -221,6 +221,19 @@ class TelekocsiController {
         }
         res.notFound('A hirdetés nem található')
     }
+
+    * ajaxReserv(req, res) {
+     const id = req.param('id');
+     const telekocsi = yield Telekocsi.find(id);
+
+     if (telekocsi) {
+        if (req.currentUser.username !== telekocsi.poster) {
+            res.unauthorized('Access denied.')
+            return
+        }
+        }
+        res.notFound('A hirdetés nem található')
+    }
 }
 
 module.exports = TelekocsiController
